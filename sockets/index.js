@@ -1,5 +1,6 @@
 const handleDriversSocket = require('./driversSocket');
 const handleAdminsSocket = require('./adminsSocket');
+const handleِAttendantsSocket = require('./attendantSocket');
 
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
@@ -11,6 +12,7 @@ const setupSockets = (io) => {
 
             handleDriversSocket(io, socket);
             handleAdminsSocket(io, socket);
+            handleِAttendantsSocket(io, socket);
 
             socket.on('disconnect', () => {
                 console.log('Disconnected');

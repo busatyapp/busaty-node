@@ -1,0 +1,30 @@
+const handleDriversSocket = require('./driversSocket');
+const handleAdminsSocket = require('./adminsSocket');
+
+const JWT_SECRET_KEY = '';
+
+const setupSockets = (io) => {
+    io.on('connection', (socket) => {
+        const userToken = socket.handshake.query.token;
+        try {
+            verify(userToken, JWT_SECRET_KEY);
+
+            handleDriversSocket(io, socket);
+            handleAdminsSocket(io, socket);
+
+            socket.on('disconnect', () => {
+                console.log('Disconnected');
+            });
+        } catch (error) {
+            // console.error('Token verification failed:', error.message);
+        }
+    });
+};
+
+const verify = (userToken, JWT_SECRET_KEY) => {
+    if (userToken != JWT_SECRET_KEY) {
+        throw new Error('not authorized');
+    }
+};
+
+module.exports = setupSockets;

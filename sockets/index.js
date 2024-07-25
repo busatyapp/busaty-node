@@ -1,3 +1,6 @@
+require('dotenv').config()
+
+
 const handleDriversSocket = require('./driversSocket');
 const handleAdminsSocket = require('./adminsSocket');
 const handleِAttendantsSocket = require('./attendantSocket');

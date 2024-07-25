@@ -1,7 +1,7 @@
 const handleDriversSocket = require('./driversSocket');
 const handleAdminsSocket = require('./adminsSocket');
 
-const JWT_SECRET_KEY = '71e456b873f87f214f139799878b911a';
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
 const setupSockets = (io) => {
     io.on('connection', (socket) => {

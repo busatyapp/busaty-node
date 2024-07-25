@@ -16,7 +16,6 @@ const setupSockets = (io) => {
                 console.log('Disconnected');
             });
         } catch (error) {
-            // console.error('Token verification failed:', error.message);
         }
     });
 };

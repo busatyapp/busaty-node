@@ -12,7 +12,7 @@ const setupSockets = (io) => {
     io.on('connection', (socket) => {
         const userToken = socket.handshake.query.token;
         try {
-            verify(userToken, JWT_SECRET_KEY);
+            // verify(userToken, JWT_SECRET_KEY);
 
             handleDriversSocket(io, socket);
             handleAdminsSocket(io, socket);

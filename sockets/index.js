@@ -4,7 +4,6 @@ require('dotenv').config()
 const handleDriversSocket = require('./driversSocket');
 const handleAdminsSocket = require('./adminsSocket');
 const handleِAttendantsSocket = require('./attendantSocket');
-const handleMzaodinSocket = require('./mzaodinSocket');
 
 const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
 
@@ -12,7 +11,7 @@ const setupSockets = (io) => {
     io.on('connection', (socket) => {
         const userToken = socket.handshake.query.token;
         try {
-            // verify(userToken, JWT_SECRET_KEY);
+            verify(userToken, JWT_SECRET_KEY);
 
             handleDriversSocket(io, socket);
             handleAdminsSocket(io, socket);

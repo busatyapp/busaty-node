@@ -1,5 +1,7 @@
 const handleAdminsSocket = (io, socket) => {
-    socket.on("admins", (eventName, message) => {
+    socket.on("admins", ( message) => {
+        const eventName = JSON.parse(message).bus_id;
+
         io.sockets.emit(eventName, message);
     });
 };
